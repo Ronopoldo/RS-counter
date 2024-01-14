@@ -2,7 +2,7 @@ const keepAlive = require(`./server`);
 
 const { readFileSync, writeFileSync } = require('fs');
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf('6900841854:AAGLYt-HlAvWyStBv8kd1T_gNUV3YD_ip-Q')
+const bot = new Telegraf(process.env.token)
 console.log('Ready!')
 bot.launch()
 
