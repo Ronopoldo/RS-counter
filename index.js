@@ -2,7 +2,7 @@ const keepAlive = require(`./server`);
 
 const { readFileSync, writeFileSync } = require('fs');
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf(process.env['token'])
+const bot = new Telegraf('6900841854:AAGLYt-HlAvWyStBv8kd1T_gNUV3YD_ip-Q')
 console.log('Ready!')
 bot.launch()
 
@@ -20,8 +20,13 @@ data = JSON.parse(readFileSync('./counterDB.json'))
 
 bot.on('message', (ctx) => 
   {
+
+    if ((ctx.message.text != null) && (ctx.message.text != NaN) && (ctx.message.text != undefined))
+    {    
     console.log(ctx.message.message_thread_id)
     console.log(data)
+    
+
     
     if (chatChecker(ctx, -1001656597866, undefined)) {   
       if ((checker(data.decimal.current + 1, ctx.message.text)) && ctx.from.id != 6900841854) {
@@ -49,7 +54,7 @@ bot.on('message', (ctx) =>
     }
 
 
-    writeFileSync('./counterDB.json', JSON.stringify(data))
+    writeFileSync('./counterDB.json', JSON.stringify(data))}
   })
 
 bot.on('edited_message', (ctx) => {
